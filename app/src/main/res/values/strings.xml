@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FitWorth</string>
+    <string name="str_get_fit">Get Fit</string>
 </resources>
