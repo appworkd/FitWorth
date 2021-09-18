@@ -26,7 +26,6 @@ class InternetFragment(
             container,
             false
         )
-        // Inflate the layout for this fragment
         return fragNoInternetBinding.root
     }
 
