@@ -1,10 +1,7 @@
 package com.appwork.fitworth.prefshelper
 
 import android.content.Context
-import androidx.datastore.preferences.core.floatPreferencesKey
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.core.longPreferencesKey
-import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.*
 import androidx.datastore.preferences.preferencesDataStore
 import com.appwork.fitworth.helper.Constants.PREFS_NAME
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -40,7 +37,7 @@ class DataStorePref @Inject constructor(
     }
 
     override suspend fun getIntPref(key: String, defValue: Int): Int {
-       return context.dataStore.getFlowValue(
+        return context.dataStore.getFlowValue(
             intPreferencesKey(key),
             defValue
         )
@@ -54,7 +51,7 @@ class DataStorePref @Inject constructor(
     }
 
     override suspend fun getLongPref(key: String, defValue: Long): Long {
-       return context.dataStore.getFlowValue(
+        return context.dataStore.getFlowValue(
             longPreferencesKey(key),
             defValue
         )
@@ -68,8 +65,22 @@ class DataStorePref @Inject constructor(
     }
 
     override suspend fun getFloatPref(key: String, defValue: Float): Float {
-       return context.dataStore.getFlowValue(
+        return context.dataStore.getFlowValue(
             floatPreferencesKey(key),
+            defValue
+        )
+    }
+
+    override suspend fun saveBooleanPref(key: String, value: Boolean) {
+        context.dataStore.setValue(
+            booleanPreferencesKey(key),
+            value
+        )
+    }
+
+    override suspend fun getBooleanPref(key: String, defValue: Boolean): Boolean {
+        return context.dataStore.getFlowValue(
+            booleanPreferencesKey(key),
             defValue
         )
     }

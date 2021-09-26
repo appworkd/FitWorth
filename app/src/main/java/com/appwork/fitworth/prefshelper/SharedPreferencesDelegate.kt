@@ -21,4 +21,8 @@ interface SharedPreferencesDelegate {
 
     suspend fun getFloatPref(key: String, defValue: Float): Float
 
+    suspend fun saveBooleanPref(key: String, value: Boolean)
+
+    suspend fun getBooleanPref(key: String, defValue: Boolean): Boolean
+
 }

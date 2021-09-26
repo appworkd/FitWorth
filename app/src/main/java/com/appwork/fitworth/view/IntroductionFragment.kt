@@ -1,7 +1,6 @@
 package com.appwork.fitworth.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,7 +31,7 @@ class IntroductionFragment
     ): View {
         // Inflate the layout for this fragment
         lifecycleScope.launch {
-
+            pref.saveBooleanPref(IS_SHOWED, true)
         }
         vbIntro = FragmentIntroductionBinding.inflate(inflater, container, false)
 

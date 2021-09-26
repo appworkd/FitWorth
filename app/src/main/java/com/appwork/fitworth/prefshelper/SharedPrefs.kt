@@ -66,4 +66,15 @@ class SharedPrefs(
         return prefs.getFloat(key, defValue) ?: defValue
     }
 
+    override suspend fun saveBooleanPref(key: String, value: Boolean) {
+        editor.apply() {
+            putBoolean(key, value)
+            apply()
+        }
+    }
+
+    override suspend fun getBooleanPref(key: String, defValue: Boolean): Boolean {
+        return prefs.getBoolean(key, defValue) ?: defValue
+    }
+
 }
