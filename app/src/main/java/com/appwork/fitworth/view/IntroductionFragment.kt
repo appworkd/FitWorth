@@ -1,15 +1,26 @@
 package com.appwork.fitworth.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.appwork.fitworth.R
+import androidx.lifecycle.lifecycleScope
+import com.appwork.fitworth.databinding.FragmentIntroductionBinding
+import com.appwork.fitworth.helper.Constants.IS_SHOWED
+import com.appwork.fitworth.prefshelper.DataStorePref
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
+class IntroductionFragment
+    : Fragment() {
+    @Inject
+    lateinit var pref: DataStorePref
 
-class IntroductionFragment : Fragment() {
-
+    lateinit var vbIntro: FragmentIntroductionBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -18,8 +29,18 @@ class IntroductionFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_introduction, container, false)
+        lifecycleScope.launch {
+
+        }
+        vbIntro = FragmentIntroductionBinding.inflate(inflater, container, false)
+
+        return vbIntro.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }
